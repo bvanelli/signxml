@@ -7,13 +7,14 @@ bytes_to_long, long_to_bytes copied from https://github.com/dlitz/pycrypto/blob/
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 import math
-import os, sys, re, struct, textwrap
+import sys, re, struct, textwrap
 from xml.etree import ElementTree as stdlibElementTree
 from base64 import b64encode, b64decode
 
 from eight import str, bytes
 from lxml import etree
 
+from ..schemas import xmldsig_core
 from ..exceptions import RedundantCert, InvalidCertificate, InvalidInput
 
 USING_PYTHON2 = True if sys.version_info < (3, 0) else False
@@ -136,8 +137,7 @@ class XMLProcessor:
     @classmethod
     def schema(cls):
         if cls._schema is None:
-            schema_path = os.path.join(os.path.dirname(__file__), "..", "schemas", cls.schema_file)
-            cls._schema = etree.XMLSchema(etree.parse(schema_path))
+            cls._schema = etree.XMLSchema(etree.fromstring(xmldsig_core))
         return cls._schema
 
     @property

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+xmldsig_core = """<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE schema
   PUBLIC "-//W3C//DTD XMLSchema 200102//EN" "http://www.w3.org/2001/XMLSchema.dtd"
  [
@@ -316,3 +316,4 @@
 <!-- End Signature -->
 
 </schema>
+""".encode()
